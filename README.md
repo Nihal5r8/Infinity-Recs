@@ -33,13 +33,13 @@ AI / ML	PyTorch (PPO), Scikit-learn (k-NN, TF-IDF), Joblib
 Database	PostgreSQL
 External APIs	Spotify API, TMDB API
 
-📂 Project Structure
 INFINITY_RECS/
 ├── backend/                         # Backend microservices & ML models
 │   ├── Datasets/                    # Raw datasets and processed data
 │   ├── MODEL/                       # Trained RL models & artifacts
 │   ├── cache/                       # Cached embeddings / intermediate results
 │   ├── __pycache__/                 # Python bytecode cache
+│   │
 │   ├── .env                         # Backend environment variables
 │   ├── .cache                       # Internal caching metadata
 │   ├── .gitignore
@@ -59,6 +59,7 @@ INFINITY_RECS/
 ├── frontend/                        # Frontend application (React + Vite)
 │   ├── public/                      # Static public assets
 │   ├── src/                         # React source code
+│   │
 │   ├── .env                         # Frontend environment variables
 │   ├── .gitignore
 │   ├── index.html
@@ -79,6 +80,7 @@ INFINITY_RECS/
 │
 ├── .gitattributes
 └── README.md                        # Main project documentation
+
 
 🧭 Architectural Overview
 
