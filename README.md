@@ -32,6 +32,82 @@ Backend	Python (Flask), SQLAlchemy, Gunicorn / Waitress
 AI / ML	PyTorch (PPO), Scikit-learn (k-NN, TF-IDF), Joblib
 Database	PostgreSQL
 External APIs	Spotify API, TMDB API
+
+📂 Project Structure
+INFINITY_RECS/
+├── backend/                         # Backend microservices & ML models
+│   ├── Datasets/                    # Raw datasets and processed data
+│   ├── MODEL/                       # Trained RL models & artifacts
+│   ├── cache/                       # Cached embeddings / intermediate results
+│   ├── __pycache__/                 # Python bytecode cache
+│   ├── .env                         # Backend environment variables
+│   ├── .cache                       # Internal caching metadata
+│   ├── .gitignore
+│   ├── .gitkeep
+│   │
+│   ├── Songs.py                     # Music recommendation service (Spotify + PPO)
+│   ├── Books.py                     # Book recommendation service
+│   ├── Games.py                     # Game recommendation service
+│   ├── Movies.py                    # Movie recommendation service (TMDB + Async)
+│   │
+│   ├── Movie_ppo.pt                 # Trained PPO model for movies
+│   ├── game_ppo.pt                  # Trained PPO model for games
+│   │
+│   ├── README.md                    # Backend-specific documentation
+│   └── eslint.config.js
+│
+├── frontend/                        # Frontend application (React + Vite)
+│   ├── public/                      # Static public assets
+│   ├── src/                         # React source code
+│   ├── .env                         # Frontend environment variables
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   ├── eslint.config.js
+│   └── README.md                    # Frontend-specific documentation
+│
+├── index.html                       # Root-level HTML entry (if applicable)
+├── package.json                     # Root package configuration
+├── package-lock.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+│
+├── .gitattributes
+└── README.md                        # Main project documentation
+
+🧭 Architectural Overview
+
+Backend (/backend)
+Each content domain (Books, Movies, Games, Music) is implemented as an independent microservice, allowing:
+
+Domain-specific models
+
+Independent scaling
+
+Clean separation of concerns
+
+PPO models (*.pt) are stored separately to enable fast loading and experimentation.
+
+Frontend (/frontend)
+A modern React + Vite application that:
+
+Provides a unified user dashboard
+
+Communicates with backend services via APIs
+
+Handles authentication, routing, and UI state
+
+Model Artifacts (MODEL/, *.pt)
+Stores trained reinforcement learning policies used for personalized recommendations.
+
+Caching & Performance
+The cache/ and .cache directories reduce recomputation overhead for embeddings and similarity lookups.
+
 ⚙️ How It Works: Hybrid Recommendation Engine
 
 Infinity Recs uses a two-phase recommendation strategy to effectively handle the cold-start problem and long-term personalization.
